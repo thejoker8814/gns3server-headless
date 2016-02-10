@@ -114,18 +114,17 @@ cd ../..
 sudo apt-get install cpulimit --assume-yes
 
 # Install Virtual-Box
-
+# sudo apt-get install virtualbox --assume-yes 
 
 # Install Qemu
-
+sudo apt-get install qemu-system-x86 qemu-utils --assume-yes
 
 ####################
 ## Configuration  ##
 ####################
 
 # setting up a user for gns3
-#sudo useradd --home-dir /home/gns3/ --user-group --create-home --groups sudo gns3
-sudo useradd --home-dir /home/gns3/ --user-group --create-home --groups sudo --shell /usr/sbin/nologin gns3
+sudo useradd --home-dir /home/gns3/ --user-group --create-home --groups sudo --shell /bin/false gns3
 
 # setting up working directories 
 sudo mkdir -p /home/gns3/.config/GNS3/ssl/
@@ -146,11 +145,12 @@ sudo cp ~/gns3server-healess/defaults/gns3_server.conf /home/gns3/GNS3/.config/
 sudo cp ~/gns3server-healess/defaults/gns3.conf.upstart /etc/init/gns3.conf
 sudo chown root:root /etc/init/gns3.conf
 
-# setup self-signed certificates
-
+# setup self-signed certificatesi
+SUBJ="/C=CA/ST=Alberta/O=GNS3SELF/localityName=Calgary/commonName=localhost/organizationalUnitName=GNS3Server/emailAddress=gns3cert@gns3.com"
+sudo openssl req -nodes -new -x509 -newkey rsa:4096 -sha256 -keyout server.key -out server.cert -days 365 -subj "$SUBJ"
+sudo mv server.* /home/gns3/.config/GNS3/ssl/
+sudo chown -R gns3: /home/gns3/.config/GNS3/ssl/
+sudo chmod 0600 /home/gns3/.config/GNS3/ssl/server.key
 
 # create credentials
-
-
-
 
