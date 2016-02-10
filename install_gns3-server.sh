@@ -116,38 +116,41 @@ sudo apt-get install cpulimit --assume-yes
 # Install Virtual-Box
 
 
+# Install Qemu
+
+
 ####################
 ## Configuration  ##
 ####################
 
 # setting up a user for gns3
-sudo useradd --home-dir /home/gns3/ --user-group --create-home --groups sudo gns3
+#sudo useradd --home-dir /home/gns3/ --user-group --create-home --groups sudo gns3
+sudo useradd --home-dir /home/gns3/ --user-group --create-home --groups sudo --shell /usr/sbin/nologin gns3
+
+# setting up working directories 
 sudo mkdir -p /home/gns3/.config/GNS3/ssl/
-sudo chmod 0700 -R /home/gns3/.config/
-sudo chown gns3:gns3 -R /home/gns3/.config/
 
 sudo mkdir -p /home/gns3/GNS3/images/
-sudo chmod 0700 -R /home/gns3/GNS3/images/
 sudo mkdir -p /home/gns3/GNS3/configs/
-sudo chmod 0700 -R /home/gns3/GNS3/configs/
 sudo mkdir -p /home/gns3/GNS3/projects/
-sudo chmod 0700 -R /home/gns3/GNS3/projects/
+sudo chmod 0700 -R /home/gns3/
+sudo chown gns3:gns3 -R /home/gns3/
+
+sudo mkdir /var/log/gns3/
+sudo chown gns3:gns3 /var/log/gns3/ 
 
 # import default gns3server.conf
-cat << EOF >> /home/gns3/.config/GNS3/gns3server.conf
-./gns3server.conf
-EOF
+sudo cp ~/gns3server-healess/defaults/gns3_server.conf /home/gns3/GNS3/.config/
 
 # install autostart and daemon mode
-sudo cp ~/gns3-server/init/gns3.conf.upstart /etc/init/gns3.conf
-sudo chown root /etc/init/gns3.conf
+sudo cp ~/gns3server-healess/defaults/gns3.conf.upstart /etc/init/gns3.conf
+sudo chown root:root /etc/init/gns3.conf
 
 # setup self-signed certificates
 
 
-# qemu
+# create credentials
 
 
-# import default gns3server.conf
 
 
