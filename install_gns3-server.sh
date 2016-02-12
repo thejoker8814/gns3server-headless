@@ -101,12 +101,18 @@ sudo make install
 cd ..
 
 # VPCS
+#sudo apt-get install libc6-dev libutil-freebsd-dev --assume-yes
+#wget http://sourceforge.net/projects/vpcs/files/0.8/vpcs-0.8-src.tbz
+#wget http://sourceforge.net/projects/vpcs/files/0.8/vpcs-0.8-src.tbz.asc
+#tar xfj vpcs-0.8-src.tbz
+#cd ./vpcs-0.8/src/
+#./mk.sh
+
 cd ~
-wget http://sourceforge.net/projects/vpcs/files/0.8/vpcs-0.8-src.tbz
-wget http://sourceforge.net/projects/vpcs/files/0.8/vpcs-0.8-src.tbz.asc
-tar xfj vpcs-0.8-src.tbz
-cd ./vpcs-0.8/src/
-./mk.sh
+git clone https://github.com/GNS3/gns3-gui.git
+cd ./gns3-gui/
+# source or download? 
+
 sudo cp vpcs /usr/local/bin/
 cd ../..
 
