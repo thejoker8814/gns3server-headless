@@ -73,6 +73,16 @@ sudo apt-get install libssl1.0.0 --assume-yes
 sudo ln -s /lib/x86_64-linux-gnu/libcrypto.so.1.0.0 /lib/libcrypto.so.4
 sudo apt-get install bison flex
 
+# install 32-bit dependencies required!
+# http://forum.gns3.net/topic11294.html
+#
+# dpkg --add-architecture i386
+# apt-get update
+# apt-get install libc6:i386 libstdc++6:i386
+# apt-get install libssl1.0.0:i386
+# ln -s /lib/i386-linux-gnu/libcrypto.so.1.0.0 /lib/i386-linux-gnu/libcrypto.so.4
+## WORKS!
+
 cd ~
 git clone https://github.com/ndevilla/iniparser.git
 cd ./iniparser/
